@@ -98,18 +98,10 @@ class Game {
     }
 
     checkForWin() {
-        // console.log("inside CheckForWin--------------------------------");
         return this.winningConditions.some((condition) => {
             const firstSymbol = this.gameSquares[condition[0]].innerHTML;
-
-            // console.log(
-            //     `inside winningConditions loop ${condition}, ${firstSymbol}`
-            // );
             const isWin = condition.every((i) => {
-                // console.log(`inside everyCheck loop ${i}`);
-
                 if (firstSymbol == "") return false;
-                // console.log(this.gameSquares[i].innerHTML == firstSymbol);
                 return this.gameSquares[i].innerHTML == firstSymbol;
             });
 
