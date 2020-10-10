@@ -1,0 +1,30 @@
+@use 'variables';
+
+* {
+    color: inherit;
+}
+
+html {
+    font-size: 17px;
+}
+
+body {
+    font-family: $main-font;
+    color: $font-color-grey;
+    line-height: 2rem;
+    font-weight: 400;
+}
+
+.headline {
+    font-family: $secondary-font;
+    color: $font-color-dark;
+
+    &--large {
+        font-weight: 500;
+        font-size: 3rem;
+        padding: 40px 0;
+        line-height: 4rem;
+        text-align: center;
+        margin: 0;
+    }
+}

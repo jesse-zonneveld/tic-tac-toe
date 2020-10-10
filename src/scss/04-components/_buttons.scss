@@ -1,0 +1,32 @@
+@use 'variables';
+
+.btn {
+    padding: 10px 40px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 2px;
+    box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.btn-start {
+    background-color: $green;
+
+    &.hide {
+        display: none;
+    }
+}
+
+.btn-new-game {
+    background-color: $green;
+}
+
+.btn-new-players {
+    background-color: $yellow;
+}

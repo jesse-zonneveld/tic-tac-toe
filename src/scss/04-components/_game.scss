@@ -1,0 +1,131 @@
+@use 'variables';
+
+.game-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game {
+    display: none;
+    width: 300px;
+    height: 300px;
+    background-color: gray;
+
+    .game-square {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $font-color-dark;
+        font-size: 4rem;
+        font-weight: 400;
+        background-color: $light-grey;
+        transition: all 0.3s ease-in-out;
+
+        &.highlight {
+            background-color: rgb(205, 245, 205);
+        }
+
+        &.unmarked:hover {
+            background-color: rgb(216, 216, 216);
+        }
+    }
+
+    &.reveal {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-gap: 7px;
+    }
+}
+
+.game-info {
+    margin: 0 auto;
+    display: none;
+    margin-bottom: 50px;
+
+    &.reveal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.score-board {
+    position: relative;
+    min-width: 200px;
+    background-color: $font-color-grey;
+    min-height: 120px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    border: 2px solid $font-color-grey;
+    row-gap: 2px;
+    font-weight: 400;
+
+    & > * {
+        background-color: rgb(255, 255, 255);
+    }
+
+    .score-board__symbol-one,
+    .score-board__symbol-two {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .score-board__name-one,
+    .score-board__name-two {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        padding-left: 5px;
+    }
+
+    .score-board__score-one,
+    .score-board__score-two {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 2px solid $font-color-grey;
+    }
+
+    &:after {
+        content: "Your Turn --->";
+        transition: all 0.3s;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        color: $red;
+        width: 100%;
+        height: 60px;
+        position: absolute;
+        top: 0;
+        left: -110%;
+    }
+
+    &.player-two-turn:after {
+        top: 50%;
+    }
+
+    &.win:after {
+        content: "You Win! --->";
+    }
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+
+    & > * {
+        margin: 5px;
+    }
+}
+
+.game-message-text {
+    display: none;
+    margin-top: 20px;
+}
