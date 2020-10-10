@@ -131,6 +131,8 @@ class Game {
         this.gameSquares.forEach((square) => {
             square.classList.remove("unmarked");
         });
+        this.gameMessageText.innerHTML = `${this.currentPlayer.name} wins!`;
+        this.gameMessageText.classList.add("bigger");
         this.updateScoreBoard();
     }
 
@@ -171,6 +173,7 @@ class Game {
         this.gameStatus = "playing";
         this.resetBoard();
         this.updateCurrentPlayer(true);
+        this.gameMessageText.classList.remove("bigger");
     }
 
     resetBoard() {

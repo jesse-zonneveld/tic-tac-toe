@@ -11,6 +11,7 @@
     width: 300px;
     height: 300px;
     background-color: gray;
+    margin-bottom: 30px;
 
     .game-square {
         display: flex;
@@ -128,4 +129,9 @@
 .game-message-text {
     display: none;
     margin-top: 20px;
+    transition: all 0.3s;
+
+    &.bigger {
+        transform: scale(1.2);
+    }
 }
