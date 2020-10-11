@@ -15,8 +15,11 @@
     }
 }
 
-.btn-start {
+.btn-start,
+.btn-single-player,
+.btn-two-player {
     background-color: $green;
+    margin-bottom: 20px;
 
     &.hide {
         display: none;

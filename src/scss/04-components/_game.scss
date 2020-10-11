@@ -13,7 +13,7 @@
     background-color: gray;
     margin-bottom: 30px;
 
-    .game-square {
+    .tile {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -25,6 +25,9 @@
 
         &.highlight {
             background-color: rgb(205, 245, 205);
+            &--grey {
+                background-color: rgb(216, 216, 216);
+            }
         }
 
         &.unmarked:hover {
@@ -133,5 +136,20 @@
 
     &.bigger {
         transform: scale(1.2);
+    }
+}
+
+.inputs-container {
+    width: 200px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    text-align: center;
+
+    &.hide {
+        display: none;
+    }
+
+    input.hide {
+        display: none;
     }
 }
