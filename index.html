@@ -11,6 +11,47 @@
         <div class="l-container-full-screen">
             <div class="l-container-1080">
                 <h1 class="headline headline--large">Tic-Tac-Toe</h1>
+                <div class="main-menu">
+                    <div class="toggle-btn">
+                        <div class="btn-single-player">Single Player</div>
+                        <div class="btn-two-player fade">Two Player</div>
+                    </div>
+                    <div class="inputs-container">
+                        <div class="guide">Type your name and symbol</div>
+                        <div class="player-one-form">
+                            <input
+                                class="player-one-name"
+                                type="text"
+                                placeholder="Player One"
+                            />
+                            <input
+                                class="player-one-symbol"
+                                type="text"
+                                placeholder="X"
+                            />
+                        </div>
+                        <div class="player-two-form hide">
+                            <input
+                                class="player-two-name"
+                                type="text"
+                                placeholder="Player Two"
+                            />
+                            <input
+                                class="player-two-symbol"
+                                type="text"
+                                placeholder="O"
+                            />
+                        </div>
+                        <div class="cpu-form">
+                            <div class="three-way-btn switch-easy">
+                                <div class="btn-easy">Easy</div>
+                                <div class="btn-medium">Medium</div>
+                                <div class="btn-hard">Hard</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn btn-start">Start Game</div>
+                </div>
                 <div class="game-info">
                     <div class="score-board">
                         <div class="score-board__symbol-one"></div>
@@ -28,21 +69,6 @@
                 </div>
                 <div class="game-holder">
                     <div class="game"></div>
-                    <div class="inputs-container hide">
-                        <input
-                            class="player-one"
-                            type="text"
-                            placeholder="Player One"
-                        />
-                        <input
-                            class="player-two"
-                            type="text"
-                            placeholder="Player Two"
-                        />
-                    </div>
-                    <div class="btn btn-single-player">Single Player</div>
-                    <div class="btn btn-two-player">Two Player</div>
-                    <div class="btn btn-start hide">Start Game</div>
                 </div>
             </div>
         </div>

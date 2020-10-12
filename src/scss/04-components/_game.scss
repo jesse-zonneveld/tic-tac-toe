@@ -140,16 +140,57 @@
 }
 
 .inputs-container {
-    width: 200px;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    width: 250px;
+    height: 110px;
     text-align: center;
+
+    .player-one-form,
+    .player-two-form {
+        display: grid;
+        grid-template-columns: 80% 15%;
+        grid-gap: 10px;
+
+        &.hide {
+            display: none;
+        }
+    }
+
+    .cpu-form.hide {
+        display: none;
+    }
 
     &.hide {
         display: none;
     }
 
-    input.hide {
+    input {
+        padding: 5px 10px;
+        border: 2px solid rgb(156, 156, 156);
+        margin-bottom: 10px;
+
+        &.hide {
+            display: none;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.main-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    &.hide {
         display: none;
     }
+}
+
+.guide {
+    color: rgb(201, 201, 201);
+    font-weight: 300;
 }

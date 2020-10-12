@@ -15,15 +15,10 @@
     }
 }
 
-.btn-start,
-.btn-single-player,
-.btn-two-player {
+.btn-start {
     background-color: $green;
     margin-bottom: 20px;
-
-    &.hide {
-        display: none;
-    }
+    margin-top: 40px;
 }
 
 .btn-new-game {
@@ -32,4 +27,185 @@
 
 .btn-new-players {
     background-color: $yellow;
+}
+
+.toggle-btn {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 300px;
+    text-align: center;
+    align-content: center;
+    margin-bottom: 30px;
+    box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+    background-color: rgb(201, 201, 201);
+    z-index: 1;
+    border-radius: 2px;
+
+    .btn-two-player {
+        position: relative;
+        z-index: 5;
+        padding: 10px;
+        transition: all 0.5s;
+        cursor: pointer;
+
+        &.fade {
+            opacity: 0.5;
+        }
+    }
+
+    .btn-single-player {
+        position: relative;
+        z-index: 5;
+        padding: 10px;
+        transition: all 0.5s;
+
+        &.fade {
+            opacity: 0.5;
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 50%;
+        left: 0;
+        background-color: $yellow;
+        transition: all 0.3s ease-in-out;
+        z-index: 4;
+        border-bottom-left-radius: 2px;
+        border-top-left-radius: 2px;
+    }
+
+    &.switch {
+        .btn-single-player {
+            cursor: pointer;
+        }
+
+        .btn-two-player {
+            cursor: default;
+        }
+
+        &:after {
+            left: 50%;
+            border-bottom-right-radius: 2px;
+            border-top-right-radius: 2px;
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+        }
+    }
+}
+
+.three-way-btn {
+    position: relative;
+    width: 250px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    align-content: center;
+    box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+    background-color: rgb(201, 201, 201);
+    z-index: 1;
+    border-radius: 2px;
+
+    .btn-easy {
+        position: relative;
+        z-index: 5;
+        transition: all 0.5s;
+    }
+
+    .btn-medium {
+        position: relative;
+        z-index: 5;
+        transition: all 0.5s;
+    }
+
+    .btn-hard {
+        position: relative;
+        z-index: 5;
+        transition: all 0.5s;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 33.33%;
+        left: 0;
+        background-color: $green;
+        transition: all 0.3s ease-in-out;
+        z-index: 4;
+        border-radius: 2px;
+    }
+
+    &.switch-easy {
+        .btn-easy {
+            opacity: 1;
+            cursor: default;
+        }
+
+        .btn-medium {
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        .btn-hard {
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        &:after {
+            left: 0;
+            background-color: $green;
+        }
+    }
+
+    &.switch-medium {
+        .btn-easy {
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        .btn-medium {
+            opacity: 1;
+            cursor: default;
+        }
+
+        .btn-hard {
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        &:after {
+            left: 33.33%;
+            background-color: $yellow;
+        }
+    }
+
+    &.switch-hard {
+        .btn-easy {
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        .btn-medium {
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        .btn-hard {
+            opacity: 1;
+            cursor: default;
+        }
+
+        &:after {
+            left: 66.7%;
+            background-color: rgb(192, 132, 132);
+        }
+    }
+
+    &.hide {
+        display: none;
+    }
 }
