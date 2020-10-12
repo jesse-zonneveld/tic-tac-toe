@@ -2,13 +2,13 @@
 
 .btn {
     padding: 10px 40px;
-    cursor: pointer;
-    transition: all 0.3s;
-    border-radius: 2px;
-    box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
     font-size: 1rem;
     font-weight: 400;
     text-align: center;
+    border-radius: $border;
+    box-shadow: $shadow;
+    cursor: pointer;
+    transition: all 0.3s;
 
     &:hover {
         transform: scale(1.05);
@@ -17,8 +17,8 @@
 
 .btn-start {
     background-color: $green;
-    margin-bottom: 20px;
     margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 .btn-new-game {
@@ -37,21 +37,18 @@
     text-align: center;
     align-content: center;
     margin-bottom: 30px;
-    box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
-    background-color: rgb(201, 201, 201);
+    background-color: $faded-grey;
+    border-radius: $border;
+    box-shadow: $shadow;
     z-index: 1;
-    border-radius: 2px;
 
     .btn-two-player {
         position: relative;
-        z-index: 5;
         padding: 10px;
-        transition: all 0.5s;
+        z-index: 5;
         cursor: pointer;
-
-        &.fade {
-            opacity: 0.5;
-        }
+        transition: all 0.5s;
+        opacity: 0.5;
     }
 
     .btn-single-player {
@@ -59,10 +56,6 @@
         z-index: 5;
         padding: 10px;
         transition: all 0.5s;
-
-        &.fade {
-            opacity: 0.5;
-        }
     }
 
     &::after {
@@ -72,55 +65,42 @@
         width: 50%;
         left: 0;
         background-color: $yellow;
-        transition: all 0.3s ease-in-out;
+        border-radius: $border;
         z-index: 4;
-        border-bottom-left-radius: 2px;
-        border-top-left-radius: 2px;
+        transition: all 0.3s ease-in-out;
     }
 
     &.switch {
         .btn-single-player {
             cursor: pointer;
+            opacity: 0.5;
         }
 
         .btn-two-player {
             cursor: default;
+            opacity: 1;
         }
 
         &:after {
             left: 50%;
-            border-bottom-right-radius: 2px;
-            border-top-right-radius: 2px;
-            border-bottom-left-radius: 0;
-            border-top-left-radius: 0;
         }
     }
 }
 
 .three-way-btn {
     position: relative;
-    width: 250px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    text-align: center;
     align-content: center;
-    box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
-    background-color: rgb(201, 201, 201);
+    width: 250px;
+    text-align: center;
+    background-color: $faded-grey;
+    box-shadow: $shadow;
+    border-radius: $border;
     z-index: 1;
-    border-radius: 2px;
 
-    .btn-easy {
-        position: relative;
-        z-index: 5;
-        transition: all 0.5s;
-    }
-
-    .btn-medium {
-        position: relative;
-        z-index: 5;
-        transition: all 0.5s;
-    }
-
+    .btn-easy,
+    .btn-medium,
     .btn-hard {
         position: relative;
         z-index: 5;
@@ -134,9 +114,9 @@
         width: 33.33%;
         left: 0;
         background-color: $green;
-        transition: all 0.3s ease-in-out;
+        border-radius: $border;
         z-index: 4;
-        border-radius: 2px;
+        transition: all 0.3s ease-in-out;
     }
 
     &.switch-easy {
@@ -201,7 +181,7 @@
 
         &:after {
             left: 66.7%;
-            background-color: rgb(192, 132, 132);
+            background-color: $red;
         }
     }
 

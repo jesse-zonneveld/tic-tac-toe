@@ -1,5 +1,10 @@
 @use 'variables';
 
+html {
+    min-height: 100vh;
+    background: $light-grey;
+}
+
 .l-container-1080 {
     max-width: 1080px;
     margin: 0 auto;
@@ -7,9 +12,4 @@
 
 .l-container-full-screen {
     width: 100%;
-}
-
-html {
-    min-height: 100vh;
-    background: $light-grey;
 }

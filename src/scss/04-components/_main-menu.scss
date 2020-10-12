@@ -1,0 +1,51 @@
+.main-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    &.hide {
+        display: none;
+    }
+
+    .inputs-container {
+        width: 250px;
+        height: 110px;
+        text-align: center;
+
+        .player-one-form,
+        .player-two-form {
+            display: grid;
+            grid-template-columns: 80% 15%;
+            grid-gap: 10px;
+
+            &.hide {
+                display: none;
+            }
+        }
+
+        .cpu-form.hide {
+            display: none;
+        }
+
+        input {
+            padding: 5px 10px;
+            border: 2px solid rgb(156, 156, 156);
+            margin-bottom: 10px;
+
+            &.hide {
+                display: none;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    .guide {
+        color: rgb(201, 201, 201);
+        font-weight: 300;
+    }
+}

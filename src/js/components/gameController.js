@@ -6,8 +6,6 @@ import CPU from "./CPU";
 class GameController {
     constructor() {
         this.winner;
-        this.difficulty = 1;
-        this.isSinglePlayer = true;
         this.currentPlayer;
         this.menu = new Menu();
         this.board = new Board();
@@ -21,14 +19,6 @@ class GameController {
             "click",
             this.initializeGame.bind(this)
         );
-        this.menu.singlePlayerBtn.addEventListener(
-            "click",
-            this.revealForm.bind(this)
-        );
-        this.menu.twoPlayerBtn.addEventListener(
-            "click",
-            this.revealForm.bind(this)
-        );
         this.menu.newGameBtn.addEventListener(
             "click",
             this.startNewGame.bind(this)
@@ -40,81 +30,30 @@ class GameController {
         this.board.tiles.forEach((tile) =>
             tile.addEventListener("click", this.handlePlayerClick.bind(this))
         );
-        this.menu.easyBtn.addEventListener(
-            "click",
-            this.setDifficulty.bind(this)
-        );
-        this.menu.mediumBtn.addEventListener(
-            "click",
-            this.setDifficulty.bind(this)
-        );
-        this.menu.hardBtn.addEventListener(
-            "click",
-            this.setDifficulty.bind(this)
-        );
     }
 
     //METHODS
     initializeGame() {
         this.menu.mainMenu.classList.add("hide");
-        const playerOneName = this.menu.playerOneFormName.value || "Player One";
-        const playerOneSymbol = this.menu.playerOneFormSymbol.value || "X";
+        const playerInfo = this.menu.getPlayerInfo();
 
         this.board.revealDOMBoard();
-        this.playerOne = new Player(playerOneName, playerOneSymbol);
-        if (this.isSinglePlayer) {
-            this.playerTwo = new CPU("CPU", "O", this.difficulty); // make computer Player
+        this.playerOne = new Player(
+            playerInfo.playerOneInfo.name,
+            playerInfo.playerOneInfo.symbol
+        );
+        if (this.menu.isSinglePlayer) {
+            this.playerTwo = new CPU("CPU", "O", this.menu.difficulty); // make computer Player
         } else {
-            const playerTwoName =
-                this.menu.playerTwoFormName.value || "Player Two";
-            const playerTwoSymbol = this.menu.playerTwoFormSymbol.value || "O";
-            this.playerTwo = new Player(playerTwoName, playerTwoSymbol);
+            this.playerTwo = new Player(
+                playerInfo.playerTwoInfo.name,
+                playerInfo.playerTwoInfo.symbol
+            );
         }
 
         this.whoWentFirstLastGame = this.playerTwo;
         this.updateCurrentPlayer(true);
         this.setAndRevealScoreBoard();
-    }
-
-    setDifficulty(e) {
-        const btn = e.currentTarget;
-        if (btn == this.menu.easyBtn) {
-            this.difficulty = 1;
-            this.menu.difficultyBtn.classList.add("switch-easy");
-            this.menu.difficultyBtn.classList.remove("switch-medium");
-            this.menu.difficultyBtn.classList.remove("switch-hard");
-        } else if (btn == this.menu.mediumBtn) {
-            this.difficulty = 5;
-            this.menu.difficultyBtn.classList.remove("switch-easy");
-            this.menu.difficultyBtn.classList.add("switch-medium");
-            this.menu.difficultyBtn.classList.remove("switch-hard");
-        } else if (btn == this.menu.hardBtn) {
-            this.difficulty = -1;
-            this.menu.difficultyBtn.classList.remove("switch-easy");
-            this.menu.difficultyBtn.classList.remove("switch-medium");
-            this.menu.difficultyBtn.classList.add("switch-hard");
-        }
-    }
-
-    revealForm(e) {
-        if (e.currentTarget == this.menu.singlePlayerBtn) {
-            this.menu.playerTwoForm.classList.add("hide");
-            this.menu.toggleBtn.classList.remove("switch");
-            this.menu.twoPlayerBtn.classList.add("fade");
-            this.menu.singlePlayerBtn.classList.remove("fade");
-            this.isSinglePlayer = true;
-            this.menu.difficultyBtn.classList.remove("hide");
-        } else {
-            this.menu.playerOneForm.classList.remove("hide");
-            this.menu.playerTwoForm.classList.remove("hide");
-            this.menu.toggleBtn.classList.add("switch");
-            this.menu.twoPlayerBtn.classList.remove("fade");
-            this.menu.singlePlayerBtn.classList.add("fade");
-            this.isSinglePlayer = false;
-            this.menu.difficultyBtn.classList.add("hide");
-        }
-        this.menu.form.classList.remove("hide");
-        this.menu.startBtn.classList.remove("hide");
     }
 
     handlePlayerClick(e) {
@@ -154,8 +93,13 @@ class GameController {
             this.menu.gameMessageText.innerHTML = `${this.currentPlayer.name}'s turn.`;
         }
         if (this.currentPlayer.name == "CPU") {
+            this.TogglePlayerAbility();
             setTimeout(this.CPUTurn.bind(this), 2000);
         }
+    }
+
+    TogglePlayerAbility() {
+        this.board.gameContainer.classList.toggle("click-shield");
     }
 
     handleGameOver() {
@@ -230,7 +174,6 @@ class GameController {
             this.playerOne.symbol,
             this.board
         );
-        console.log(bestPosition);
 
         this.board.markTile(this.playerTwo.symbol, bestPosition);
         this.board.tiles[bestPosition].classList.remove("unmarked");
@@ -240,6 +183,8 @@ class GameController {
         } else {
             this.updateCurrentPlayer();
         }
+
+        this.TogglePlayerAbility();
     }
 }
 
